@@ -89,6 +89,8 @@ class Form
             return '';
         }
 
+        $value = base64_encode($expirationTime.'|'.$knownHmac.'|0');
+
         // Save sha1 of HmacSalt to formstate for cr-field
         if ($runtime->getFormState()) {
             $runtime->getFormState()->setFormValue(self::FIELD_ID, sha1($this->getHmacSalt($runtime)));
